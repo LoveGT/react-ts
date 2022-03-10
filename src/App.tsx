@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+interface IState {
+  list: string[];
 }
+export default class App extends Component<any, IState> {
+  state = {
+    list: []
+  }
+  inputRef  = React.createRef<HTMLInputElement>()
+  handleAdd = () => {
+   console.log((this.inputRef.current as HTMLInputElement).value)
+  //  this.state.list = [(this.inputRef.current as HTMLInputElement).value,...this.state.list]
+  };
 
-export default App;
+  render() {
+    const {list} = this.state
+    return (
+      <div>
+        <input ref={this.inputRef} type="text" />
+        <button onClick={this.handleAdd}>Add</button>
+        <ul>
+        {
+            list.map(item=> {
+              return 
+            })
+        }
+        </ul>
+      </div>
+    );
+  }
+}
